@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Découvrir l’univers — Belvezet Lab’</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container universe">
+
+    <!-- HERO -->
+    <header class="hero">
+      <img src="assets/images/logo-belvezet-lab.png"
+           alt="Belvezet Lab"
+           class="logo small">
+
+      <h1>Découvrir l’univers</h1>
+
+      <p class="tagline">
+        Laboratoire d’idées & de projets ancrés dans le réel
+      </p>
+    </header>
+
+    <!-- INTRO -->
+    <section>
+      <p>
+        <strong>Belvezet Lab’</strong> est un laboratoire d’idées et de projets
+        pensés pour durer.
+      </p>
+
+      <p>
+        J’y explore la création de lieux, d’activités et d’écosystèmes
+        ancrés dans le réel — avec leurs réussites, leurs doutes,
+        leurs ajustements et leurs moments de joie.
+      </p>
+
+      <p>
+        Ici, je ne partage pas des recettes toutes faites.
+        Je documente des processus : ce qui fonctionne,
+        ce qui résiste, ce qui évolue.
+      </p>
+    </section>
+
+    <!-- APPROCHE -->
+    <section>
+      <h2>Une approche</h2>
+
+      <p>
+        Belvezet Lab’ est né d’un besoin simple :
+        entreprendre autrement, sans dissocier vision,
+        contraintes et réalité du terrain.
+      </p>
+
+      <div class="pillars">
+        <div>Observer avant d’agir</div>
+        <div>Structurer sans figer</div>
+        <div>Tester, ajuster, transmettre</div>
+      </div>
+
+      <p>
+        Chaque projet est abordé comme une expérimentation,
+        avec sincérité, transparence et exigence.
+      </p>
+    </section>
+
+    <!-- FONDATRICE -->
+    <section class="founder">
+      <h2>Derrière Belvezet Lab’</h2>
+
+      <p>
+        Belvezet Lab’ est porté par une entrepreneuse de terrain.
+      </p>
+
+      <p>
+        Mon rôle n’est pas de vendre un idéal,
+        mais de créer un cadre :
+        un cadre qui permet à des idées de devenir
+        des projets viables, alignés et incarnés.
+      </p>
+
+      <p>
+        Je crois aux projets qui prennent le temps de se construire,
+        et aux lieux qui racontent une histoire
+        avant de chercher à performer.
+      </p>
+    </section>
+
+    <!-- PROJET MANIFESTE -->
+    <section class="project">
+      <h2>Un projet manifeste</h2>
+
+      <p>
+        <strong>Le Domaine de Belvezet</strong> est un ancien corps de ferme
+        niché au cœur du Larzac et des Causses Noires,
+        actuellement en restauration.
+      </p>
+
+      <p>
+        Il a vocation à devenir un lieu de vie,
+        de rencontre et d’inspiration.
+      </p>
+
+      <p>
+        À travers ce projet, je partage chaque étape
+        de sa transformation :
+        choix architecturaux, défis techniques,
+        moments de doute et avancées concrètes —
+        avec transparence et sincérité.
+      </p>
+
+      <p>
+        Ce projet est le premier terrain
+        d’expérimentation de Belvezet Lab’.
+      </p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <a href="index.html">← Retour au hub</a>
+      <a href="https://instagram.com/" target="_blank">
+        Suivre les coulisses
+      </a>
+    </section>
+
+    <footer>
+      © Belvezet Lab’ · all rights reserved
+    </footer>
+
+  </main>
+</body>
+</html>

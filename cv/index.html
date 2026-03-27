@@ -89,13 +89,13 @@
   .role { font-size: 10px; color: var(--cyan); margin-bottom: 8px; }
   .role::before { content: '// '; color: var(--text-dim); }
 
-  .contact-row { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-bottom: 8px; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-bottom: 8px; align-items: center; }
   .ci { font-size: 9.5px; color: var(--text-dim); }
   .ci .k { color: var(--purple); }
   .ci .v { color: var(--text); }
 
   .bio {
-    background: rgba(0,255,157,0.05);
+    background: rgba(94,207,160,0.05);
     border-left: 2px solid var(--green);
     padding: 6px 10px;
     font-size: 9.5px;
@@ -174,10 +174,10 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .tg { color: var(--green); border-color: rgba(0,255,157,0.35); background: rgba(0,255,157,0.08); }
-  .tc { color: var(--cyan); border-color: rgba(0,229,255,0.35); background: rgba(0,229,255,0.08); }
-  .tp { color: var(--purple); border-color: rgba(176,108,255,0.35); background: rgba(176,108,255,0.08); }
-  .to { color: var(--orange); border-color: rgba(255,149,0,0.35); background: rgba(255,149,0,0.08); }
+  .tg { color: var(--green); border-color: rgba(94,207,160,0.35); background: rgba(94,207,160,0.08); }
+  .tc { color: var(--cyan); border-color: rgba(86,200,216,0.35); background: rgba(86,200,216,0.08); }
+  .tp { color: var(--purple); border-color: rgba(159,127,224,0.35); background: rgba(159,127,224,0.08); }
+  .to { color: var(--orange); border-color: rgba(232,160,74,0.35); background: rgba(232,160,74,0.08); }
 
   /* ── PROJECTS ── */
   .proj { margin-bottom: 6px; }
@@ -187,7 +187,7 @@
   .proj-desc { font-size: 8.5px; color: var(--text-dim); margin-left: 12px; line-height: 1.4; }
 
   /* ── EDU ── */
-  .edu { margin-bottom: 6px; padding-left: 8px; border-left: 2px solid rgba(176,108,255,0.35); }
+  .edu { margin-bottom: 6px; padding-left: 8px; border-left: 2px solid rgba(159,127,224,0.35); }
   .edu:last-child { margin-bottom: 0; }
   .edu-date { font-size: 8px; color: var(--orange); }
   .edu-name { font-size: 9.5px; font-weight: 600; color: var(--text); line-height: 1.35; }
@@ -206,10 +206,10 @@
   .traits { display: flex; flex-wrap: wrap; gap: 3px; }
   .trait {
     font-size: 8.5px; padding: 1px 7px;
-    border: 1px solid rgba(0,255,157,0.2);
+    border: 1px solid rgba(94,207,160,0.2);
     border-radius: 20px;
     color: var(--text-dim);
-    background: rgba(0,255,157,0.04);
+    background: rgba(94,207,160,0.04);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -221,7 +221,6 @@
   /* ── CONTACT BUTTONS ── */
   .contact-btn {
     padding: 5px 14px;
-    background: transparent;
     border-radius: 4px;
     font-family: 'DM Sans', sans-serif;
     font-size: 10px;
@@ -243,10 +242,6 @@
   }
   .email-btn:hover { opacity: 0.85; }
 
-  @media print {
-    .contact-btn { display: none; }
-  }
-
   /* ── STATUS BAR ── */
   .statusbar {
     background: var(--bg3);
@@ -265,16 +260,87 @@
   .sright { margin-left: auto; }
   .cursor { display: inline-block; width: 6px; height: 10px; background: var(--green); margin-left: 2px; vertical-align: middle; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
+  /* ── SCREEN ── */
   @media screen {
     body { padding: 20px; }
-    .page { box-shadow: 0 0 60px rgba(0,255,157,0.1); }
+    .page { box-shadow: 0 0 60px rgba(94,207,160,0.08); }
     .cursor { animation: blink 1s step-end infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
   }
 
+  /* ── PRINT ── */
   @media print {
-    body { padding: 0; background: #080c10; }
-    .page { width: 100%; min-height: 100vh; max-height: none; box-shadow: none; }
+    body { padding: 0; background: var(--bg); }
+    .page { width: 210mm; min-height: 297mm; max-height: 297mm; overflow: hidden; box-shadow: none; }
+    .main { grid-template-columns: 1fr 62mm; }
+    .contact-btn { display: none; }
+    .cursor { display: none; }
+  }
+
+  /* ── MOBILE ── */
+  @media screen and (max-width: 720px) {
+    body { padding: 0 !important; }
+
+    .page {
+      width: 100% !important;
+      min-height: 100vh;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .topbar-title { font-size: 8px; }
+
+    .header { padding: 14px 14px 12px; }
+    .prompt { font-size: 9px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .name { font-size: 18px !important; }
+    .vtag { font-size: 9px; }
+    .role { font-size: 11px !important; }
+    .bio { font-size: 11px !important; line-height: 1.6; }
+
+    .contact-row { gap: 6px 10px; }
+    .ci { font-size: 11px !important; }
+    .contact-btn { font-size: 11px !important; padding: 8px 18px !important; }
+
+    .main { grid-template-columns: 1fr !important; }
+
+    .col-left {
+      border-right: none !important;
+      border-bottom: 1px solid var(--border);
+      padding: 16px !important;
+    }
+    .col-right { padding: 16px !important; }
+
+    .sec { margin-bottom: 18px !important; }
+    .sec-title { font-size: 9px !important; margin-bottom: 10px !important; }
+
+    .exp-date { font-size: 10px !important; }
+    .exp-role { font-size: 13px !important; }
+    .exp-co { font-size: 11px !important; }
+    .exp-desc { font-size: 11px !important; line-height: 1.55 !important; }
+    .exp { margin-bottom: 12px !important; }
+
+    .skill-lbl { font-size: 10px !important; }
+    .tag { font-size: 10px !important; padding: 3px 9px !important; }
+
+    .proj-name { font-size: 12px !important; }
+    .proj-desc { font-size: 11px !important; }
+
+    .edu-date { font-size: 10px !important; }
+    .edu-name { font-size: 12px !important; }
+    .edu-school { font-size: 11px !important; }
+
+    .lang-h { font-size: 12px !important; }
+    .trait { font-size: 11px !important; padding: 3px 10px !important; }
+    .hobby { font-size: 12px !important; margin-bottom: 6px !important; }
+
+    .statusbar {
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 14px;
+      font-size: 10px;
+    }
+    .sright { margin-left: 0; width: 100%; }
+    .cursor { display: none; }
   }
 </style>
 </head>
@@ -308,6 +374,10 @@
       <span class="ci"><span class="k">dob</span>: <span class="v">18/08/1996</span></span>
       <span class="ci"><span class="k">mobility</span>: <span class="v">Permis B · Véhiculée</span></span>
     </div>
+    <div class="bio">
+      Cheffe de projet SI dynamique et créative. Forte capacité à analyser les besoins métiers, piloter des prestataires et accompagner les équipes dans l'adoption de nouveaux outils. Curieuse et polyvalente, j'aime structurer, créer et faire évoluer les systèmes pour améliorer l'expérience utilisateur.
+    </div>
+  </div>
 
   <!-- MODAL ANTI-ROBOT -->
   <div id="robot-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px); align-items:center; justify-content:center;">
@@ -319,45 +389,6 @@
         <button id="robot-confirm" style="padding:9px 20px; background:var(--green); color:var(--bg); border:none; border-radius:4px; font-size:11px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; letter-spacing:0.05em;">✓ Confirmer</button>
         <button onclick="closeModal()" style="padding:9px 20px; background:transparent; color:var(--text-dim); border:1px solid var(--border); border-radius:4px; font-size:11px; cursor:pointer; font-family:'DM Sans',sans-serif;">Annuler</button>
       </div>
-    </div>
-  </div>
-
-  <script>
-    var _pendingAction = null;
-
-    function handleCall() {
-      _pendingAction = 'call';
-      document.getElementById('robot-icon').textContent = '📞';
-      document.getElementById('robot-msg').innerHTML = 'Je ne suis pas un robot.<br>Je souhaite appeler Amélie.';
-      document.getElementById('robot-modal').style.display = 'flex';
-      document.getElementById('robot-confirm').onclick = function() {
-        closeModal();
-        window.location.href = 'tel:+33659060598';
-      };
-    }
-
-    function handleEmail() {
-      _pendingAction = 'email';
-      document.getElementById('robot-icon').textContent = '✉️';
-      document.getElementById('robot-msg').innerHTML = 'Je ne suis pas un robot.<br>Je souhaite contacter Amélie.';
-      document.getElementById('robot-modal').style.display = 'flex';
-      document.getElementById('robot-confirm').onclick = function() {
-        closeModal();
-        window.location.href = 'mailto:chapuis.amelie@gmail.com?subject=Prise de contact — CV&body=Bonjour Amélie,';
-      };
-    }
-
-    function closeModal() {
-      document.getElementById('robot-modal').style.display = 'none';
-    }
-
-    // Close on backdrop click
-    document.getElementById('robot-modal').addEventListener('click', function(e) {
-      if (e.target === this) closeModal();
-    });
-  </script>
-    <div class="bio">
-      Cheffe de projet SI dynamique et créative. Forte capacité à analyser les besoins métiers, piloter des prestataires et accompagner les équipes dans l'adoption de nouveaux outils. Curieuse et polyvalente, j'aime structurer, créer et faire évoluer les systèmes pour améliorer l'expérience utilisateur.
     </div>
   </div>
 
@@ -455,7 +486,7 @@
           </div>
         </div>
         <div class="skill-grp">
-          <div class="skill-lbl">|En apprentissage| Autodidacte — développement</div>
+          <div class="skill-lbl">Autodidacte — développement</div>
           <div class="tags">
             <span class="tag tg">Node.js</span>
             <span class="tag tg">Prisma</span>
@@ -545,8 +576,8 @@
       <!-- BÉNÉVOLAT -->
       <div class="sec">
         <div class="sec-title">Bénévolat</div>
-        <div class="hobby">Blue Rally : Europe|Ecosse|Bardenas</div>
-        <div class="hobby">Twing Raid</div>
+        <div class="hobby">🏁 Blue Rally : Europe | Écosse | Bardenas</div>
+        <div class="hobby">🏁 Twing Raid</div>
       </div>
 
     </div>
@@ -556,4 +587,41 @@
   <div class="statusbar">
     <span><span class="sdot"></span>OPEN TO WORK</span>
     <span>UTF-8</span>
-    <span>🇫�
+    <span>🇫🇷 FR</span>
+    <span class="sright">amelie_chapuis.json<span class="cursor"></span></span>
+  </div>
+
+</div>
+
+<script>
+  function handleCall() {
+    document.getElementById('robot-icon').textContent = '📞';
+    document.getElementById('robot-msg').innerHTML = 'Je ne suis pas un robot.<br>Je souhaite appeler Amélie.';
+    document.getElementById('robot-modal').style.display = 'flex';
+    document.getElementById('robot-confirm').onclick = function() {
+      closeModal();
+      window.location.href = 'tel:+33659060598';
+    };
+  }
+
+  function handleEmail() {
+    document.getElementById('robot-icon').textContent = '✉️';
+    document.getElementById('robot-msg').innerHTML = 'Je ne suis pas un robot.<br>Je souhaite contacter Amélie.';
+    document.getElementById('robot-modal').style.display = 'flex';
+    document.getElementById('robot-confirm').onclick = function() {
+      closeModal();
+      window.location.href = 'mailto:chapuis.amelie@gmail.com?subject=Prise de contact — CV&body=Bonjour Amélie,';
+    };
+  }
+
+  function closeModal() {
+    document.getElementById('robot-modal').style.display = 'none';
+  }
+
+  document.getElementById('robot-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+</script>
+
+</body>
+</html>

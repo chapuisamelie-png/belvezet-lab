@@ -218,6 +218,35 @@
   .hobby { font-size: 9.5px; color: var(--text-dim); margin-bottom: 4px; display: flex; gap: 5px; align-items: center; }
   .hobby:last-child { margin-bottom: 0; }
 
+  /* ── CONTACT BUTTONS ── */
+  .contact-btn {
+    padding: 5px 14px;
+    background: transparent;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .phone-btn {
+    background: transparent;
+    color: var(--green);
+    border: 1px solid var(--green);
+  }
+  .phone-btn:hover { background: rgba(94,207,160,0.12); }
+  .email-btn {
+    background: var(--green);
+    color: var(--bg);
+    border: 1px solid var(--green);
+  }
+  .email-btn:hover { opacity: 0.85; }
+
+  @media print {
+    .contact-btn { display: none; }
+  }
+
   /* ── STATUS BAR ── */
   .statusbar {
     background: var(--bg3);
@@ -274,11 +303,59 @@
     </div>
     <div class="role">Cheffe de projets SI &amp; Product Builder</div>
     <div class="contact-row">
-      <span class="ci"><span class="k">phone</span>: <span class="v">06.59.06.05.98</span></span>
-      <span class="ci"><span class="k">email</span>: <span class="v"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c4f444d5c59455f024d41494045496c4b414d4540024f4341">[email&#160;protected]</a></span></span>
+      <button class="contact-btn phone-btn" onclick="handleCall()">📞 Appeler</button>
+      <button class="contact-btn email-btn" onclick="handleEmail()">✉️ Contacter</button>
       <span class="ci"><span class="k">dob</span>: <span class="v">18/08/1996</span></span>
       <span class="ci"><span class="k">mobility</span>: <span class="v">Permis B · Véhiculée</span></span>
     </div>
+
+  <!-- MODAL ANTI-ROBOT -->
+  <div id="robot-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.7); backdrop-filter:blur(4px); align-items:center; justify-content:center;">
+    <div style="background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:32px 36px; text-align:center; max-width:340px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+      <div style="font-size:28px; margin-bottom:12px;" id="robot-icon">🤖</div>
+      <div style="font-family:'Orbitron',monospace; font-size:10px; color:var(--green); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px;">Vérification</div>
+      <div id="robot-msg" style="font-size:12px; color:var(--text); margin-bottom:22px; line-height:1.6;">Je ne suis pas un robot.<br>Je souhaite contacter Amélie.</div>
+      <div style="display:flex; gap:10px; justify-content:center;">
+        <button id="robot-confirm" style="padding:9px 20px; background:var(--green); color:var(--bg); border:none; border-radius:4px; font-size:11px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; letter-spacing:0.05em;">✓ Confirmer</button>
+        <button onclick="closeModal()" style="padding:9px 20px; background:transparent; color:var(--text-dim); border:1px solid var(--border); border-radius:4px; font-size:11px; cursor:pointer; font-family:'DM Sans',sans-serif;">Annuler</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var _pendingAction = null;
+
+    function handleCall() {
+      _pendingAction = 'call';
+      document.getElementById('robot-icon').textContent = '📞';
+      document.getElementById('robot-msg').innerHTML = 'Je ne suis pas un robot.<br>Je souhaite appeler Amélie.';
+      document.getElementById('robot-modal').style.display = 'flex';
+      document.getElementById('robot-confirm').onclick = function() {
+        closeModal();
+        window.location.href = 'tel:+33659060598';
+      };
+    }
+
+    function handleEmail() {
+      _pendingAction = 'email';
+      document.getElementById('robot-icon').textContent = '✉️';
+      document.getElementById('robot-msg').innerHTML = 'Je ne suis pas un robot.<br>Je souhaite contacter Amélie.';
+      document.getElementById('robot-modal').style.display = 'flex';
+      document.getElementById('robot-confirm').onclick = function() {
+        closeModal();
+        window.location.href = 'mailto:chapuis.amelie@gmail.com?subject=Prise de contact — CV&body=Bonjour Amélie,';
+      };
+    }
+
+    function closeModal() {
+      document.getElementById('robot-modal').style.display = 'none';
+    }
+
+    // Close on backdrop click
+    document.getElementById('robot-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
     <div class="bio">
       Cheffe de projet SI dynamique et créative. Forte capacité à analyser les besoins métiers, piloter des prestataires et accompagner les équipes dans l'adoption de nouveaux outils. Curieuse et polyvalente, j'aime structurer, créer et faire évoluer les systèmes pour améliorer l'expérience utilisateur.
     </div>
@@ -378,7 +455,7 @@
           </div>
         </div>
         <div class="skill-grp">
-          <div class="skill-lbl">Autodidacte — développement</div>
+          <div class="skill-lbl">|En apprentissage| Autodidacte — développement</div>
           <div class="tags">
             <span class="tag tg">Node.js</span>
             <span class="tag tg">Prisma</span>

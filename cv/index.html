@@ -352,7 +352,7 @@
     <span class="dot r"></span>
     <span class="dot o"></span>
     <span class="dot g"></span>
-    <span class="topbar-title">chapuis.amelie — zsh — 180×48</span>
+    <span class="topbar-title">chapuis.amelie — <span id="viewCount">...</span> vues</span>
   </div>
 
   <!-- HEADER -->
@@ -621,6 +621,17 @@
   document.getElementById('robot-modal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
+</script>
+<script>
+  fetch('https://api.countapi.xyz/hit/belvezet-cv-amelie/visits')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('viewCount').innerText = data.value;
+      console.log("Nombre de vues :", data.value);
+    })
+    .catch(() => {
+      document.getElementById('viewCount').innerText = "?";
+    });
 </script>
 
 </body>

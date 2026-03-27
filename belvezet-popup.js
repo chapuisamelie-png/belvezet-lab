@@ -221,23 +221,6 @@ style.textContent = `
   }
   #blv-msg.error { color: #8b3a2a; }
 
-  #blv-close {
-    position: absolute;
-    top: 14px; right: 16px;
-    background: none;
-    border: none;
-    font-family: 'Jost', sans-serif;
-    font-size: 11px;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: rgba(61,46,30,0.35);
-    cursor: pointer;
-    padding: 4px 6px;
-    transition: color 0.2s;
-    z-index: 2;
-  }
-  #blv-close:hover { color: var(--bark); }
-
   #blv-note {
     margin-top: 16px;
     font-family: 'Jost', sans-serif;
@@ -260,7 +243,6 @@ overlay.setAttribute('aria-label', 'BelvezetLab — Bientôt');
 
 overlay.innerHTML = `
   <div id="blv-card">
-    <button id="blv-close" aria-label="Fermer">fermer ✕</button>
 
     <!-- Corner marks -->
     <svg class="blv-corner tl" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -331,7 +313,7 @@ document.body.style.overflow = 'hidden';
 
 // ── Block all links & buttons on page ──────────────
 function blockPage() {
-  document.querySelectorAll('a, button:not(#blv-btn):not(#blv-close), input:not(#blv-email)').forEach(el => {
+  document.querySelectorAll('a, button:not(#blv-btn), input:not(#blv-email)').forEach(el => {
     if (!overlay.contains(el)) {
       el.addEventListener('click', preventNav, true);
       el.style.pointerEvents = 'none';
@@ -358,8 +340,6 @@ function closePopup() {
     });
   }, 280);
 }
-
-document.getElementById('blv-close').addEventListener('click', closePopup);
 
 // Close on overlay click (outside card)
 overlay.addEventListener('click', (e) => {

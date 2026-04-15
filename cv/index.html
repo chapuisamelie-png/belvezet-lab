@@ -622,17 +622,7 @@
     if (e.target === this) closeModal();
   });
 </script>
-<script>
-  fetch('https://countapi.mileshilliard.com/api/v1/hit/belvezet-cv-amelie/visits')
-    .then(r => r.json())
-    .then(data => {
-      document.getElementById('viewCount').innerText = data.value;
-      console.log("Nombre de vues :", data.value);
-    })
-    .catch(() => {
-      document.getElementById('viewCount').innerText = "?";
-    });
-</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="a33dae25-34b7-4d21-9d6b-391ac59ea7fd"></script>
 
 </body>
 </html>
